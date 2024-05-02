@@ -1,17 +1,47 @@
-body{
-    background-color: black;
-    color: white;
+body {
+  background-color: black;
+  color: white;
 }
 
 .png-container.png-container {
-    overflow: hidden;
-  }
-  
-  .png-container img {  
-    filter: drop-shadow(0px 1000px 0 red);
-    transform: translateY(-1000px);
-  }
-  .custom-background {
-    /* overflow:hidden ; */
-    background-color: #222222; /* Bleu avec 30% de transparence */
+  overflow: hidden;
+}
+
+.png-container img {
+  filter: drop-shadow(0px 1000px 0 red);
+  transform: translateY(-1000px);
+}
+.custom-background {
+  /* overflow:hidden ; */
+  background-color: #222222; /* Bleu avec 30% de transparence */
+  background: radial-gradient(
+    circle,
+    rgba(40, 44, 52, 1) 29%,
+    rgba(34, 34, 34, 1) 86%,
+    rgba(35, 35, 36, 1) 99%
+  );
+}
+.bg-select-group {
+  background-color: #282828;
+  background: radial-gradient(
+    circle,
+    rgba(40, 44, 52, 1) 29%,
+    rgba(34, 34, 34, 1) 86%,
+    rgba(35, 35, 36, 1) 99%
+  );
+}
+.btn-sap {
+  background-color: #57002f;
+  color: #ffb1db;
+}
+.btn-eco {
+  background-color: #003257;
+  color: #6ec2ff;
+}
+.btn-ap {
+  background-color: #572f00;
+  color: #ffb46e;
+}
+.line-break{
+  background-color: rgb(15 23 42);
 }
