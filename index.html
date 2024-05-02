@@ -26,7 +26,7 @@
     >
       <section>
         <!-- Select option -->
-        <div class="flex mt-9 flex-col">
+        <div class="flex mt-9 flex-col lg:w-96 m-auto ">
           <h2 class="m-auto font-semibold text-xl">Choisir son option</h2>
           <img
             class="size-4 mx-auto mt-2 mb-2"
@@ -89,7 +89,7 @@
 
         <hr class="mt-6 mb-4 w-24 m-auto border-slate-800" />
         <!-- Explanation of the site -->
-        <p class="text-xs text-gray-300 text-center">
+        <p class="text-xs md:text-sm text-gray-300 text-center">
           Ce site sert uniquement à enregistrer les commandes, les porfesseurs
           se chargeront de vous facturer.
         </p>
@@ -100,7 +100,7 @@
         <p class="text-xs text-center pt-2 text-gray-500">
           Infographie . Photographie . Option Club
         </p>
-        <ul class="flex justify-evenly pt-2 pb-4">
+        <ul class="flex space-x-16 pt-2 m-auto flex w-52  pb-4">
           <li>
             <img src="./assets/icons/ap/mouse.svg" alt="" srcset="" />
           </li>
@@ -116,7 +116,9 @@
         <p class="text-xs text-center pt-2 text-gray-500">
           Nursing . Medico Social . Coiffure . Esthétique
         </p>
-        <ul class="flex justify-evenly pt-2 pb-4">
+
+        <ul class="flex justify-evenly pt-2 m-auto w-80  pb-4">
+            
           <li>
             <img src="./assets/icons/sap/toubib.svg" alt="" srcset="" />
           </li>
@@ -135,7 +137,8 @@
         <p class="text-xs text-center pt-2 text-gray-500">
           Marketing . Gestion . 7è pro . Economie
         </p>
-        <ul class="flex justify-evenly pt-2">
+          <ul class="flex justify-evenly pt-2 m-auto w-52  pb-4">
+            <!-- <ul class="flex justify-evenly pt-2"> -->
           <li>
             <img src="./assets/icons/eco/dollars.svg" alt="" srcset="" />
           </li>
@@ -146,7 +149,7 @@
       </section>
 
       <!-- Articles -->
-      <section>
+      <section style="display: none;">
         <h3>Les articles</h3>
         <div
           class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
