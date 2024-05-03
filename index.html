@@ -17,6 +17,7 @@
     x-data="{
     homeSectionIsVisible : true,
     articleIsVisible: false,
+    formIsVisible: false,
     articles : [
         {
           id:1,
@@ -57,7 +58,7 @@
       class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
     >
       <!--------------------------------------------------- HOME SECTION -------------------------------------->
-      <section x-show="!homeSectionIsVisible">
+      <section x-show="homeSectionIsVisible">
         <!-- Select option -->
         <div class="flex mt-9 flex-col w-80 m-auto pb-6">
           <h2 class="m-auto font-semibold text-xl mt-3">Choisir son option</h2>
@@ -258,6 +259,7 @@
             </div>
             <div class="mt-10">
               <button
+                @click="articleIsVisible = !articleIsVisible; formIsVisible = !formIsVisible;"
                 class="block w-40 text-xl font-bold text-slate-700 m-auto rounded-full bg-white p-2 w-52"
               >
                 <span class="text-2xl">J'en veux un !</span>
@@ -271,12 +273,12 @@
       <!------------------------------------------------- ARTICLE SECTION ----------------------------------------------------------->
 
       <!------------------------------------------------- COMMAND ---------------------------------------------------------------->
-      <section>
-        <div class="mt-6">
+      <section x-show="formIsVisible">
+        <div class="mt-6 m-auto w-80">
           <button
             class="flex justify-between w-fit m-auto rounded-full p-2 mb-10 btn-ap"
             type="button"
-            @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; getArticeSelected(2)"
+            @click="articleIsVisible = !articleIsVisible;formIsVisible = !formIsVisible;"
           >
             <svg
               class="stroke-1 fill-current size-7 p-1"
@@ -288,28 +290,65 @@
                 d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"
               />
             </svg>
-            <span class="text-xl font-bold pl-1 pr-1"> Arts appliqués </span>
+            <span class="text-xl font-bold pl-1 pr-1" x-text="articleSelected.category">.</span>
           </button>
           <input
             type="text"
             name="price"
             id="price"
-            class="mt-6 m-auto block w-96 bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Nom et prénom"
           />
           <input
             type="text"
             name="price"
             id="price"
-            class="mt-6 m-auto block w-96 bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Classe"
           />
-          <p>TAILLE</p>
-          <ul>
+          <p class="mt-6 ml-6">TAILLE</p>
+          <ul class="flex mt-3 m-auto w-72">
             <li>
-              <img src="" alt="" srcset="">
+              <img src="./assets/icons/sizes/xs.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/s.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/m.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/l.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/xl.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/2xl.svg" alt="" srcset="">
+            </li>
+            <li>
+              <img src="./assets/icons/sizes/3xl.svg" alt="" srcset="">
             </li>
           </ul>
+          <p class="mt-6 ml-6">JE VEUX</p>
+          <ul class="flex mt-3 m-auto justify-evenly">
+            <li class="bg-gray-200 rounded-md text-black p-1">UN T-SHIRT</li>
+            <li class="bg-gray-200 rounded-md text-black p-1">UN PULL</li>
+            <li class="bg-gray-200 rounded-md text-black p-1">LES DEUX</li>
+          </ul>
+          <p class="mt-6 ml-6">FLOCAGE A L'AVANT (OPTIONNEL)</p>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Max. 12 caractères"
+          />
+          <p class="text-sm color-explanation text-center pt-2 w-80 m-auto">
+            Ce site sert uniquement à enregistrer les commandes, les porfesseurs
+            se chargeront de vous facturer.
+          </p>
+          <button class="bg-blue-btn p-4 text-2xl rounded-md mt-5 ml-4 m-auto w-72 text-white-700" >COMMANDER</button>
         </div>
       </section>
     </main>

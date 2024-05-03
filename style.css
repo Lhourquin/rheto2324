@@ -52,3 +52,6 @@ body {
 .text-color-article{
   color:rgba(110, 110, 110, 1)
 }
+.bg-blue-btn{
+  background-color: rgba(65, 96, 255, 1);
+}
