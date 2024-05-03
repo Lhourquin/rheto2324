@@ -46,3 +46,9 @@ body {
 .color-options-list {
   color: #6c6c6c;
 }
+.rounded-img{
+  border-radius: 5%;
+}
+.text-color-article{
+  color:rgba(110, 110, 110, 1)
+}
