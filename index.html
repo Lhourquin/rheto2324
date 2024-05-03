@@ -13,7 +13,39 @@
     ></script>
     <title>Rheto 2023/2024</title>
   </head>
-  <body>
+  <body
+    x-data="{
+    homeSectionIsVisible : true,
+    articleIsVisible: false,
+    articles : [
+        {
+          id:1,
+          category : 'Service aux personnes',
+          article_name : 'Rhéto S.A.P',
+          price_pull : '28€',
+          price_tshirt : '18€'
+        },
+        {
+          id:2,
+          category : 'Economie',
+          article_name : 'Rhéto Economie',
+          price_pull : '28€',
+          price_tshirt : '18€'
+        },
+        {
+          id:3,
+          category : 'Arts appliqués',
+          article_name : 'Rhéto Arts appliqués',
+          price_pull : '28€',
+          price_tshirt : '18€'
+        }
+    ],
+    articleSelected: {},
+    getArticeSelected(id){
+      this.articleSelected = this.articles[id];
+    }
+  }"
+  >
     <!-- Header with logo -->
     <header
       class="pt-2 pb-2 fixed z-40 bg-black top-0 left-0 right-0 border-b-2 line-break"
@@ -25,7 +57,7 @@
       class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
     >
       <!--------------------------------------------------- HOME SECTION -------------------------------------->
-      <section x-show="isVisible">
+      <section x-show="!homeSectionIsVisible">
         <!-- Select option -->
         <div class="flex mt-9 flex-col w-80 m-auto pb-6">
           <h2 class="m-auto font-semibold text-xl mt-3">Choisir son option</h2>
@@ -40,8 +72,8 @@
             <button
               class="flex justify-between w-fit m-auto rounded-full p-2 btn-sap"
               type="button"
+              @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; getArticeSelected(0)"
             >
-
               <svg
                 class="stroke-1 fill-current size-7 p-1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +87,11 @@
               <span class="text-xl font-bold pl-1 pr-1">
                 Service aux personnes
               </span>
-
             </button>
             <button
               class="flex justify-between w-fit m-auto rounded-full p-2 btn-eco"
               type="button"
+              @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; getArticeSelected(1)"
             >
               <svg
                 class="stroke-1 fill-current size-7 p-1"
@@ -76,6 +108,7 @@
             <button
               class="flex justify-between w-fit m-auto rounded-full p-2 btn-ap"
               type="button"
+              @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; getArticeSelected(2)"
             >
               <svg
                 class="stroke-1 fill-current size-7 p-1"
@@ -157,17 +190,21 @@
       <!--------------------------------------------------- HOME SECTION -------------------------------------->
 
       <!------------------------------------------------- ARTICLE SECTION ----------------------------------------------------------->
-      <section class="m-auto">
-        <button class="mt-5 ml-2 mb-0 flex">
-          <img src="./assets/icons/back-btn.svg" alt="" srcset=""><span class="p-3 text-xl font-semibold">Retour</span>
+      <section class="m-auto" x-show="articleIsVisible">
+        <button
+          class="mt-5 ml-2 mb-0 flex"
+          @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; articleSelected = {};"
+        >
+          <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
+            class="p-3 text-xl font-semibold"
+            >Retour</span
+          >
         </button>
         <!-- ARTICLE -->
-        <article
-          class="mt-3 w-80 m-auto"
-        >
+        <article class="mt-3 w-80 m-auto">
           <div>
             <div
-              class="m-auto overflow-hidden rounded-img  bg-gray-200 lg:aspect-none aspect-h-8 aspect-w-7"
+              class="m-auto overflow-hidden rounded-img bg-gray-200 lg:aspect-none aspect-h-8 aspect-w-7"
             >
               <!-- IMG -->
               <img
@@ -180,19 +217,23 @@
               <div class="flex-column justify-evenly">
                 <h3
                   class="leading-6 tracking-wider font-semibold text-white-700 ml-1 text-3xl"
+                  x-text="articleSelected.article_name"
                 >
-                  <a href="#">
-                    <span aria-hidden="true" class="absolute"></span>
-                    Rhéto S.A.P
-                  </a>
+                  .
                 </h3>
                 <div class="flex space-x-1 ml-1 font-semibold">
                   <p class="mt-1 text-lg text-color-article">PULL :</p>
-                  <p class="mt-1 text-lg text-white-500">28€</p>
+                  <p
+                    class="mt-1 text-lg text-white-500"
+                    x-text="articleSelected.price_pull"
+                  ></p>
                 </div>
                 <div class="flex space-x-1 ml-1 font-semibold">
                   <p class="text-lg text-color-article">T-SHIRT :</p>
-                  <p class="text-lg text-white-500">18€</p>
+                  <p
+                    class="text-lg text-white-500"
+                    x-text="articleSelected.price_tshirt"
+                  ></p>
                 </div>
               </div>
             </div>
@@ -228,6 +269,49 @@
         <!-- ARTICLE -->
       </section>
       <!------------------------------------------------- ARTICLE SECTION ----------------------------------------------------------->
+
+      <!------------------------------------------------- COMMAND ---------------------------------------------------------------->
+      <section>
+        <div class="mt-6">
+          <button
+            class="flex justify-between w-fit m-auto rounded-full p-2 mb-10 btn-ap"
+            type="button"
+            @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; getArticeSelected(2)"
+          >
+            <svg
+              class="stroke-1 fill-current size-7 p-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+            >
+              <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+              <path
+                d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"
+              />
+            </svg>
+            <span class="text-xl font-bold pl-1 pr-1"> Arts appliqués </span>
+          </button>
+          <input
+            type="text"
+            name="price"
+            id="price"
+            class="mt-6 m-auto block w-96 bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Nom et prénom"
+          />
+          <input
+            type="text"
+            name="price"
+            id="price"
+            class="mt-6 m-auto block w-96 bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            placeholder="Classe"
+          />
+          <p>TAILLE</p>
+          <ul>
+            <li>
+              <img src="" alt="" srcset="">
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
   </body>
 </html>
