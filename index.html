@@ -297,9 +297,17 @@
       >
         <div class="mt-6 m-auto w-80">
           <button
-            class="flex justify-between w-fit m-auto rounded-full p-2 mb-10 btn-ap"
-            type="button"
-            @click="articleIsVisible = !articleIsVisible;formIsVisible = !formIsVisible;"
+          class="mt-5  mb-0 flex"
+          @click="articleIsVisible = !articleIsVisible;formIsVisible = !formIsVisible;"
+
+        >
+          <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
+            class="p-1 text-xl font-semibold"
+            >Retour</span
+          >
+        </button>
+          <div
+            class="flex justify-between w-fit m-auto rounded-full p-2 mt-2 mb-10 btn-ap"
           >
             <svg
               class="stroke-1 fill-current size-7 p-1"
@@ -312,7 +320,7 @@
               />
             </svg>
             <span class="text-xl font-bold pl-1 pr-1" x-text="articleSelected.category">.</span>
-          </button>
+          </div>
           <input
             type="text"
             name="price"
@@ -328,29 +336,31 @@
             placeholder="Classe"
           />
           <p class="mt-6 ml-6">TAILLE</p>
-          <ul class="flex mt-3 m-auto w-72">
-            <li>
-              <img src="./assets/icons/sizes/xs.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/s.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/m.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/l.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/xl.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/2xl.svg" alt="" srcset="">
-            </li>
-            <li>
-              <img src="./assets/icons/sizes/3xl.svg" alt="" srcset="">
-            </li>
-          </ul>
+          <ul class="flex mt-3 w-72" x-data="{
+            svgs: [
+              { id: 1, src: './assets/icons/sizes/xs.svg', size:'XS', name: 'Taille xs', active: false },
+              { id: 2, src: './assets/icons/sizes/s.svg', size:'S',name: 'Taille s', active: false },
+              { id: 3, src: './assets/icons/sizes/m.svg', size:'M',name: 'Taille m', active: false },
+              { id: 4, src: './assets/icons/sizes/l.svg',size:'L', name: 'Taille l', active: false },
+              { id: 5, src: './assets/icons/sizes/xl.svg', size:'XL',name: 'Taille xl', active: false },
+              { id: 6, src: './assets/icons/sizes/2xl.svg', size:'2XL',name: 'Taille 2xl', active: false },
+              { id: 7, src: './assets/icons/sizes/3xl.svg',size:'3XL', name: 'Taille 3xl', active: false }
+            ],
+            updateColor: function(id) {
+              this.svgs.forEach(svg => { svg.active = false; });
+              const svg = this.svgs.find(svg => svg.id === id);
+              svg.active = true;
+            }
+          }">
+        <template x-for="svg in svgs" :key="svg.id">
+          <li class="m-1">
+            <button class="custom-button" x-text="svg.size" :alt="svg.name" 
+            :class="{ 'bg-white text-black': svg.active, 'bg-gray-800 text-white': !svg.active }"
+            @click="updateColor(svg.id)" ></button>
+          </li>
+        </template>
+      </ul>
+      
           <p class="mt-6 ml-6">JE VEUX</p>
           <ul class="flex mt-3 m-auto justify-evenly">
             <li class="bg-gray-200 rounded-md text-black p-1">UN T-SHIRT</li>

@@ -55,3 +55,14 @@ body {
 .bg-blue-btn{
   background-color: rgba(65, 96, 255, 1);
 }
+.custom-button {
+  width: 37px;                
+  height: 36px;              
+  background-color: #202020;  
+  color: white;               
+  border: none;               
+  border-radius: 50%;         
+  font-size: 15px;            
+  font-weight: bold;      
+  cursor: pointer;           
+}
