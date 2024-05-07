@@ -58,13 +58,14 @@
       class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
     >
       <!--------------------------------------------------- HOME SECTION -------------------------------------->
-      <section x-show="homeSectionIsVisible"     
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0 scale-90"
-      x-transition:enter-end="opacity-100 scale-100"
-      x-transition:leave="transition ease-in duration-300"
-      x-transition:leave-start="opacity-100 scale-100"
-      x-transition:leave-end="opacity-0 scale-90"
+      <section
+        x-show="homeSectionIsVisible"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
       >
         <!-- Select option -->
         <div class="flex mt-9 flex-col w-80 m-auto pb-6">
@@ -198,13 +199,15 @@
       <!--------------------------------------------------- HOME SECTION -------------------------------------->
 
       <!------------------------------------------------- ARTICLE SECTION ----------------------------------------------------------->
-      <section class="m-auto" x-show="articleIsVisible"
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0 scale-90"
-      x-transition:enter-end="opacity-100 scale-100"
-      x-transition:leave="transition ease-in duration-300"
-      x-transition:leave-start="opacity-100 scale-100"
-      x-transition:leave-end="opacity-0 scale-90"
+      <section
+        class="m-auto"
+        x-show="articleIsVisible"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
       >
         <button
           class="mt-5 ml-2 mb-0 flex"
@@ -287,25 +290,25 @@
       <!------------------------------------------------- ARTICLE SECTION ----------------------------------------------------------->
 
       <!------------------------------------------------- COMMAND ---------------------------------------------------------------->
-      <section x-show="formIsVisible"  
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0 scale-90"
-      x-transition:enter-end="opacity-100 scale-100"
-      x-transition:leave="transition ease-in duration-300"
-      x-transition:leave-start="opacity-100 scale-100"
-      x-transition:leave-end="opacity-0 scale-90"
+      <section
+        x-show="formIsVisible"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
       >
         <div class="mt-6 m-auto w-80">
           <button
-          class="mt-5  mb-0 flex"
-          @click="articleIsVisible = !articleIsVisible;formIsVisible = !formIsVisible;"
-
-        >
-          <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
-            class="p-1 text-xl font-semibold"
-            >Retour</span
+            class="mt-5 mb-0 flex"
+            @click="articleIsVisible = !articleIsVisible;formIsVisible = !formIsVisible;"
           >
-        </button>
+            <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
+              class="p-1 text-xl font-semibold"
+              >Retour</span
+            >
+          </button>
           <div
             class="flex justify-between w-fit m-auto rounded-full p-2 mt-2 mb-10 btn-ap"
           >
@@ -319,67 +322,107 @@
                 d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"
               />
             </svg>
-            <span class="text-xl font-bold pl-1 pr-1" x-text="articleSelected.category">.</span>
+            <span
+              class="text-xl font-bold pl-1 pr-1"
+              x-text="articleSelected.category"
+              >.</span
+            >
           </div>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder="Nom et prénom"
-          />
-          <input
-            type="text"
-            name="price"
-            id="price"
-            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder="Classe"
-          />
-          <p class="mt-6 ml-6">TAILLE</p>
-          <ul class="flex mt-3 w-72" x-data="{
+          <form
+            @submit.prevent=""
+            x-data="{
             svgs: [
-              { id: 1, src: './assets/icons/sizes/xs.svg', size:'XS', name: 'Taille xs', active: false },
-              { id: 2, src: './assets/icons/sizes/s.svg', size:'S',name: 'Taille s', active: false },
-              { id: 3, src: './assets/icons/sizes/m.svg', size:'M',name: 'Taille m', active: false },
-              { id: 4, src: './assets/icons/sizes/l.svg',size:'L', name: 'Taille l', active: false },
-              { id: 5, src: './assets/icons/sizes/xl.svg', size:'XL',name: 'Taille xl', active: false },
-              { id: 6, src: './assets/icons/sizes/2xl.svg', size:'2XL',name: 'Taille 2xl', active: false },
-              { id: 7, src: './assets/icons/sizes/3xl.svg',size:'3XL', name: 'Taille 3xl', active: false }
+              { id: 1, size:'XS', name: 'Taille xs', active: false },
+              { id: 2, size:'S',name: 'Taille s', active: false },
+              { id: 3, size:'M',name: 'Taille m', active: false },
+              { id: 4, size:'L', name: 'Taille l', active: false },
+              { id: 5, size:'XL',name: 'Taille xl', active: false },
+              { id: 6, size:'2XL',name: 'Taille 2xl', active: false },
+              { id: 7, size:'3XL', name: 'Taille 3xl', active: false }
             ],
-            updateColor: function(id) {
-              this.svgs.forEach(svg => { svg.active = false; });
-              const svg = this.svgs.find(svg => svg.id === id);
-              svg.active = true;
+            clothings:[
+                { id: 1, text: 'UN T-SHIRT', clothing_type: 'T-SHIRT', active: false },
+                { id: 2, text: 'UN PULL', clothing_type: 'PULL', active : false },
+            ],
+            updateColor: function(type, id) {
+                type.forEach(item => { item.active = false; });
+                const item = type.find(item => item.id === id);
+                item.active = true;
             }
-          }">
-        <template x-for="svg in svgs" :key="svg.id">
-          <li class="m-1">
-            <button class="custom-button" x-text="svg.size" :alt="svg.name" 
-            :class="{ 'bg-white text-black': svg.active, 'bg-gray-800 text-white': !svg.active }"
-            @click="updateColor(svg.id)" ></button>
-          </li>
-        </template>
-      </ul>
-      
-          <p class="mt-6 ml-6">JE VEUX</p>
-          <ul class="flex mt-3 m-auto justify-evenly">
-            <li class="bg-gray-200 rounded-md text-black p-1">UN T-SHIRT</li>
-            <li class="bg-gray-200 rounded-md text-black p-1">UN PULL</li>
-            <li class="bg-gray-200 rounded-md text-black p-1">LES DEUX</li>
-          </ul>
-          <p class="mt-6 ml-6">FLOCAGE A L'AVANT (OPTIONNEL)</p>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            class="mt-6 m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            placeholder="Max. 12 caractères"
-          />
-          <p class="text-sm color-explanation text-center pt-2 w-80 m-auto">
-            Ce site sert uniquement à enregistrer les commandes, les porfesseurs
-            se chargeront de vous facturer.
-          </p>
-          <button class="bg-blue-btn p-4 text-2xl rounded-md mt-5 ml-4 m-auto w-72 text-white-700" >COMMANDER</button>
+          }"
+          >
+            <div class="p-1 mt-6">
+              <label for="nom">Nom et prénom:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Nom et prénom"
+              />
+            </div>
+            <div class="p-1 mt-6">
+              <label for="classe">Classe:</label>
+              <input
+                type="text"
+                name="class"
+                id="class"
+                class="m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Classe"
+              />
+            </div>
+            <div class="mt-6">
+              <p>TAILLE</p>
+              <ul class="flex w-72">
+                <template x-for="svg in svgs" :key="svg.id">
+                  <li class="m-1">
+                    <button
+                      class="custom-button"
+                      x-text="svg.size"
+                      :alt="svg.name"
+                      :class="{ 'bg-white text-black': svg.active, 'bg-gray-800 text-white': !svg.active }"
+                      @click="updateColor(svgs, svg.id)"
+                    ></button>
+                  </li>
+                </template>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <p>JE VEUX</p>
+              <ul class="flex mt-2 m-auto justify-evenly">
+                <template x-for="clothing in clothings" :key="clothing.id">
+                  <li class="bg-gray-200 rounded-md border-none text-black p-1">
+                    <button
+                      class="w-full font-semibold p-1 h-full"
+                      x-text="clothing.text"
+                      :alt="clothing.text"
+                      :class="{ 'bg-white text-black': clothing.active, 'bg-gray-800 text-white': !clothing.active }"
+                      @click="updateColor(clothings, clothing.id)"
+                    ></button>
+                  </li>
+                </template>
+              </ul>
+            </div>
+            <div class="p-1 mt-6">
+              <label for="flocage">FLOCAGE A L'AVANT (OPTIONNEL)</label>
+              <input
+                type="text"
+                name="flocage"
+                id="flocage"
+                class="m-auto block bg-black rounded-md border-0 py-1.5 pl-4 pr-20 pt-3 pb-3 text-white-500 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Max. 12 caractères"
+              />
+            </div>
+            <p class="text-sm color-explanation text-center pt-2 w-80 m-auto">
+              Ce site sert uniquement à enregistrer les commandes, les
+              porfesseurs se chargeront de vous facturer.
+            </p>
+            <button
+              class="bg-blue-btn p-4 text-2xl rounded-md mt-5 ml-4 m-auto w-72 text-white-700"
+            >
+              COMMANDER
+            </button>
+          </form>
         </div>
       </section>
     </main>
