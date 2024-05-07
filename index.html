@@ -209,18 +209,18 @@
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-90"
       >
-        <button
-          class="mt-5 ml-2 mb-0 flex"
-          @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; articleSelected = {};"
-        >
-          <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
-            class="p-1 text-xl font-semibold"
-            >Retour</span
+      <!-- ARTICLE -->
+      <article class="mt-3 w-80 m-auto">
+          <button
+            class="mt-5 ml-2 mb-0 flex"
+            @click="homeSectionIsVisible = !homeSectionIsVisible; articleIsVisible = !articleIsVisible; articleSelected = {};"
           >
-        </button>
-        <!-- ARTICLE -->
-        <article class="mt-3 w-80 m-auto">
-          <div>
+            <img src="./assets/icons/back-btn.svg" alt="" srcset="" /><span
+              class="p-1 text-xl font-semibold"
+              >Retour</span
+            >
+          </button>
+          <div class="mt-3">
             <div
               class="m-auto overflow-hidden rounded-img bg-gray-200 lg:aspect-none aspect-h-8 aspect-w-7"
             >
